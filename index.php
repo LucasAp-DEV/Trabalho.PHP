@@ -6,6 +6,7 @@ require_once 'model/Passageiro.php';
 require_once 'model/Piloto.php';
 require_once 'model/Comissario.php';
 require_once 'model/Voo.php';
+require_once 'model/Bagagem.php';
 
 $aeroportoOrigem = new Aeroporto('GRU', 'São Paulo');
 $aeroportoDestino = new Aeroporto('JFK', 'Nova York');
@@ -39,53 +40,51 @@ $voo->adicionarPassageiro($passageiro1);
 $voo->adicionarPassageiro($passageiro2);
 $voo->adicionarPassageiro($passageiro3);
 
+$bagagem1 = new Bagagem('Mala de mão', 5.5);
+$bagagem2 = new Bagagem('Mala grande', 12.2);
+$bagagem4 = new Bagagem('Mala grande', 12.2);
+$bagagem3 = new Bagagem('Mochila', 3.0);
+
+$passageiro1->adicionarBagagem($bagagem1);
+$passageiro1->adicionarBagagem($bagagem4);
+$passageiro2->adicionarBagagem($bagagem2);
+$passageiro3->adicionarBagagem($bagagem3);
+
 echo "INFORMAÇÃO DE VOO:<br>";
-
 echo "<br>"; //pulando linha
-
 echo "ORIGEM: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})<br>";
-
 echo "<br>"; //pulando linha
-
 echo "DESTINO: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
-
 echo "<br>"; //pulando linha
-
 echo "VELOCIDADE: {$velocidadeMedia} Km/h <br>";
 echo "DISTANCIA: {$voo->getDistanciaMilhas()} milhas<br>";
-
 echo "<br>"; //pulando linha
-
 echo "ESCALA:<br>";
 foreach ($voo->getEscalas() as $escala) {
     echo "* {$escala->getCidade()} ({$escala->getCodigo()})<br>";
 }
-
 echo "<br>"; //pulando linha
-
 echo "AERONAVE: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
-
 echo "<br>"; //pulando linha
-
 echo "PILOTO: {$voo->getPiloto()->getNome()} ({$voo->getPiloto()->getIdade()} anos)<br>";
-
-
 echo "<br>"; //pulando linha
-
 echo "COMISSÁRIOS:<br>";
 foreach ($voo->getComissarios() as $comissario) {
     echo "* {$comissario->getNome()}<br>";
 }
 
 echo "<br>"; //pulando linha
-
 echo "PASSAGEIROS:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
-    echo "* {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()})<br>";
+    echo "* {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()}):<br>";
+    $bagagens = $passageiro->getBagagens();
+    foreach ($bagagens as $bagagem) {
+        echo "&nbsp;&nbsp;&nbsp;&nbsp;{$bagagem->getTipo()} - {$bagagem->getPeso()} kg<br>";
+    }
+    echo "<br>";
 }
 
 echo "<br>"; //pulando linha
-
 $tempoDeVooEmHoras = $voo->calcularTempoDeVoo(); //testar
 if ($tempoDeVooEmHoras >= 24) {
     $dias = floor($tempoDeVooEmHoras / 24);

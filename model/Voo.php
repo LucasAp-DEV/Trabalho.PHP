@@ -70,4 +70,5 @@ class Voo {
     public function getDistanciaMilhas(): float {
         return $this->converterDistanciaParaMilhas();
     }
+    
 }
