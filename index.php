@@ -19,7 +19,7 @@ $comissarios = [
     new Comissario('Jucelino Santos')
 ];
 
-$distancia = 8000;
+$distancia = 7672;
 $velocidadeMedia = 900;
 
 
@@ -47,20 +47,12 @@ echo "ORIGEM: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()}
 
 echo "<br>"; //pulando linha
 
-echo "VELOCIDADE: {$velocidadeMedia} Km/h <br>";
-echo "DISTANCIA: {$voo->getDistanciaMilhas()} milhas<br>";
-
-$tempoDeVooEmHoras = $voo->calcularTempoDeVoo();
-$dias = floor($tempoDeVooEmHoras / 24);
-$horas = floor($tempoDeVooEmHoras % 24);
-$minutos = round(($tempoDeVooEmHoras * 60) % 60);
-
-echo "TEMPO DE VOO: {$dias} dias, {$horas} horas e {$minutos} minutos<br>";
-
+echo "DESTINO: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
 
 echo "<br>"; //pulando linha
 
-echo "DESTINO: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
+echo "VELOCIDADE: {$velocidadeMedia} Km/h <br>";
+echo "DISTANCIA: {$voo->getDistanciaMilhas()} milhas<br>";
 
 echo "<br>"; //pulando linha
 
@@ -90,4 +82,18 @@ echo "<br>"; //pulando linha
 echo "PASSAGEIROS:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
     echo "* {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()})<br>";
+}
+
+echo "<br>"; //pulando linha
+
+$tempoDeVooEmHoras = $voo->calcularTempoDeVoo(); //testar
+if ($tempoDeVooEmHoras >= 24) {
+    $dias = floor($tempoDeVooEmHoras / 24);
+    $horas = floor($tempoDeVooEmHoras % 24);
+    $minutos = round(($tempoDeVooEmHoras * 60) % 60);
+    echo "TEMPO DE VOO: {$dias} dias, {$horas} horas e {$minutos} minutos<br>";
+} else {
+    $horas = floor($tempoDeVooEmHoras);
+    $minutos = round(($tempoDeVooEmHoras * 60) % 60);
+    echo "TEMPO DE VOO: {$horas} horas e {$minutos} minutos<br>";
 }
