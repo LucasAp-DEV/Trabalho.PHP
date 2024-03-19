@@ -59,21 +59,24 @@ echo "<br>"; //pulando linha
 echo "VELOCIDADE: {$velocidadeMedia} Km/h <br>";
 echo "DISTANCIA: {$voo->getDistanciaMilhas()} milhas<br>";
 echo "<br>"; //pulando linha
+
 echo "ESCALA:<br>";
 foreach ($voo->getEscalas() as $escala) {
     echo "* {$escala->getCidade()} ({$escala->getCodigo()})<br>";
 }
+
 echo "<br>"; //pulando linha
 echo "AERONAVE: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
 echo "<br>"; //pulando linha
 echo "PILOTO: {$voo->getPiloto()->getNome()} ({$voo->getPiloto()->getIdade()} anos)<br>";
 echo "<br>"; //pulando linha
+
 echo "COMISSÁRIOS:<br>";
 foreach ($voo->getComissarios() as $comissario) {
     echo "* {$comissario->getNome()}<br>";
 }
-
 echo "<br>"; //pulando linha
+
 echo "PASSAGEIROS:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
     echo "* {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()}):<br>";
