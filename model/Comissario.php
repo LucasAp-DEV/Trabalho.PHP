@@ -1,4 +1,3 @@
-// Comissario.php
 <?php
 
 class Comissario {

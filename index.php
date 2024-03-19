@@ -15,12 +15,12 @@ $aeroportoDestino = new Aeroporto('JFK', 'Nova York');
 $aeronave = new Aeronave('Boeing 737', 150);
 
 //criando piloto
-$piloto = new Piloto('João Silva');
+$piloto = new Piloto('João Silva', 42);
 
 //criando comissários
 $comissarios = [
-    new Comissario('Maria Souza'),
-    new Comissario('Carlos Oliveira')
+    new Comissario('Lucas Aparecido'),
+    new Comissario('Jucelino Santos')
 ];
 
 //criando voo
@@ -43,21 +43,43 @@ $voo->adicionarPassageiro($passageiro2);
 $voo->adicionarPassageiro($passageiro3);
 
 // exibindo informaoçes do voo
-echo "Informações do voo:<br>";
-echo "Origem: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})<br>";
-echo "Destino: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
-echo "Escala(s):<br>";
+echo "INFORMAÇÃO DE VOO:<br>";
+
+echo"<br>";
+
+echo "ORIGEM: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})<br>";
+
+echo"<br>";
+
+echo "DESTINO: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
+
+echo"<br>";
+
+echo "ESCALA:<br>";
 foreach ($voo->getEscalas() as $escala) {
-    echo "- {$escala->getCidade()} ({$escala->getCodigo()})<br>";
+    echo "* {$escala->getCidade()} ({$escala->getCodigo()})<br>";
 }
-echo "Aeronave: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
-echo "Piloto: {$voo->getPiloto()->getNome()}<br>";
-echo "Comissários:<br>";
+
+echo"<br>";
+
+echo "AAERONAVE: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
+
+echo"<br>";
+
+echo "PILOTO: {$voo->getPiloto()->getNome()} ({$voo->getPiloto()->getIdade()} anos)<br>";
+
+
+echo"<br>";
+
+echo "COMISSARIOS:<br>";
 foreach ($voo->getComissarios() as $comissario) {
-    echo "- {$comissario->getNome()}<br>";
+    echo "* {$comissario->getNome()}<br>";
 }
-echo "Passageiros:<br>";
+
+echo"<br>";
+
+echo "PASSAGEIROS:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
-    echo "- {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()})<br>";
+    echo "* {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()})<br>";
 }
 
