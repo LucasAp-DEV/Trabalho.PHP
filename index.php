@@ -34,27 +34,30 @@ $voo->adicionarEscala($escala1);
 $voo->adicionarEscala($escala2);
 
 //adicionando passageiros
-$passageiro1 = new Passageiro('Ana Silva', 25, 'Econômica');
+$passageiro1 = new Passageiro('Lucas Silva', 24, 'Econômica');
 $passageiro2 = new Passageiro('Pedro Oliveira', 35, 'Executiva');
+$passageiro3 = new Passageiro('Eloisi Carolini', 19, 'Executiva');
 
 $voo->adicionarPassageiro($passageiro1);
 $voo->adicionarPassageiro($passageiro2);
+$voo->adicionarPassageiro($passageiro3);
 
 // exibindo informaoçes do voo
-echo "Informações do voo:\n";
-echo "Origem: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})\n";
-echo "Destino: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})\n";
-echo "Escala(s):\n";
+echo "Informações do voo:<br>";
+echo "Origem: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})<br>";
+echo "Destino: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
+echo "Escala(s):<br>";
 foreach ($voo->getEscalas() as $escala) {
-    echo "- {$escala->getCidade()} ({$escala->getCodigo()})\n";
+    echo "- {$escala->getCidade()} ({$escala->getCodigo()})<br>";
 }
-echo "Aeronave: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})\n";
-echo "Piloto: {$voo->getPiloto()->getNome()}\n";
-echo "Comissários:\n";
+echo "Aeronave: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
+echo "Piloto: {$voo->getPiloto()->getNome()}<br>";
+echo "Comissários:<br>";
 foreach ($voo->getComissarios() as $comissario) {
-    echo "- {$comissario->getNome()}\n";
+    echo "- {$comissario->getNome()}<br>";
 }
-echo "Passageiros:\n";
+echo "Passageiros:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
-    echo "- {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()})\n";
+    echo "- {$passageiro->getNome()} ({$passageiro->getIdade()} anos, {$passageiro->getTipo()})<br>";
 }
+
