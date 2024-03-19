@@ -19,11 +19,11 @@ class Voo {
         $this->passageiros = [];
     }
     
-    public function adicionarEscala(Aeroporto $aeroporto): void {
+    public function adicionarEscala(Aeroporto $aeroporto): void { //verificar
         $this->escalas[] = $aeroporto;
     }
     
-    public function adicionarPassageiro(Passageiro $passageiro): void {
+    public function adicionarPassageiro(Passageiro $passageiro): void { //verificar
         $this->passageiros[] = $passageiro;
     }
 
