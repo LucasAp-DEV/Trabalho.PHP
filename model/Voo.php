@@ -8,8 +8,10 @@ class Voo {
     private array $passageiros;
     private Piloto $piloto;
     private array $comissarios;
-    
-    public function __construct(Aeroporto $origem, Aeroporto $destino, Aeronave $aeronave, Piloto $piloto, array $comissarios) {
+    private float $distancia;
+    private float $velocidadeMedia;
+
+    public function __construct(Aeroporto $origem, Aeroporto $destino, Aeronave $aeronave, Piloto $piloto, array $comissarios, float $distancia, float $velocidadeMedia) {
         $this->origem = $origem;
         $this->destino = $destino;
         $this->aeronave = $aeronave;
@@ -17,14 +19,24 @@ class Voo {
         $this->comissarios = $comissarios;
         $this->escalas = [];
         $this->passageiros = [];
+        $this->distancia = $distancia;
+        $this->velocidadeMedia = $velocidadeMedia;
     }
     
-    public function adicionarEscala(Aeroporto $aeroporto): void { //verificar
+    public function adicionarEscala(Aeroporto $aeroporto): void {
         $this->escalas[] = $aeroporto;
     }
     
-    public function adicionarPassageiro(Passageiro $passageiro): void { //verificar
+    public function adicionarPassageiro(Passageiro $passageiro): void {
         $this->passageiros[] = $passageiro;
+    }
+
+    public function calcularTempoDeVoo(): float {
+        return $this->distancia / $this->velocidadeMedia;
+    }
+
+    public function converterDistanciaParaMilhas(): float {
+        return $this->distancia * 0.621371;
     }
 
     public function getOrigem(): Aeroporto {
@@ -53,5 +65,9 @@ class Voo {
 
     public function getPassageiros(): array {
         return $this->passageiros;
+    }
+
+    public function getDistanciaMilhas(): float {
+        return $this->converterDistanciaParaMilhas();
     }
 }
