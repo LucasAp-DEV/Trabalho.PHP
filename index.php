@@ -45,38 +45,38 @@ $voo->adicionarPassageiro($passageiro3);
 // exibindo informaoçes do voo
 echo "INFORMAÇÃO DE VOO:<br>";
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "ORIGEM: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})<br>";
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "DESTINO: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "ESCALA:<br>";
 foreach ($voo->getEscalas() as $escala) {
     echo "* {$escala->getCidade()} ({$escala->getCodigo()})<br>";
 }
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "AAERONAVE: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "PILOTO: {$voo->getPiloto()->getNome()} ({$voo->getPiloto()->getIdade()} anos)<br>";
 
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "COMISSARIOS:<br>";
 foreach ($voo->getComissarios() as $comissario) {
     echo "* {$comissario->getNome()}<br>";
 }
 
-echo"<br>";
+echo"<br>";//pulando linha
 
 echo "PASSAGEIROS:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
