@@ -1,6 +1,6 @@
 <?php
 
-class Comissario {
+class Comissario extends Funcionario{
     private string $nome;
     
     public function __construct(string $nome) {
@@ -9,5 +9,9 @@ class Comissario {
     
     public function getNome(): string {
         return $this->nome;
+    }
+
+    public function realizarFuncao() {
+        return "Atendendo os passageiros.";
     }
 }

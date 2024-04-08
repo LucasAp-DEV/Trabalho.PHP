@@ -7,6 +7,7 @@ require_once 'model/Piloto.php';
 require_once 'model/Comissario.php';
 require_once 'model/Voo.php';
 require_once 'model/Bagagem.php';
+require_once 'model/Funcionario.php';
 
 $aeroportoOrigem = new Aeroporto('GRU', 'São Paulo');
 $aeroportoDestino = new Aeroporto('JFK', 'Nova York');
@@ -50,32 +51,32 @@ $passageiro1->adicionarBagagem($bagagem4);
 $passageiro2->adicionarBagagem($bagagem2);
 $passageiro3->adicionarBagagem($bagagem3);
 
+echo "<br>"; 
 echo "INFORMAÇÃO DE VOO:<br>";
-echo "<br>"; //pulando linha
 echo "ORIGEM: {$voo->getOrigem()->getCidade()} ({$voo->getOrigem()->getCodigo()})<br>";
-echo "<br>"; //pulando linha
+echo "<br>"; 
 echo "DESTINO: {$voo->getDestino()->getCidade()} ({$voo->getDestino()->getCodigo()})<br>";
-echo "<br>"; //pulando linha
+echo "<br>"; 
 echo "VELOCIDADE: {$velocidadeMedia} Km/h <br>";
 echo "DISTANCIA: {$voo->getDistanciaMilhas()} milhas<br>";
-echo "<br>"; //pulando linha
+echo "<br>"; 
 
 echo "ESCALA:<br>";
 foreach ($voo->getEscalas() as $escala) {
     echo "* {$escala->getCidade()} ({$escala->getCodigo()})<br>";
 }
 
-echo "<br>"; //pulando linha
+echo "<br>"; 
 echo "AERONAVE: {$voo->getAeronave()->getModelo()} (Capacidade: {$voo->getAeronave()->getCapacidade()})<br>";
-echo "<br>"; //pulando linha
+echo "<br>"; 
 echo "PILOTO: {$voo->getPiloto()->getNome()} ({$voo->getPiloto()->getIdade()} anos)<br>";
-echo "<br>"; //pulando linha
+echo "<br>"; 
 
 echo "COMISSÁRIOS:<br>";
 foreach ($voo->getComissarios() as $comissario) {
     echo "* {$comissario->getNome()}<br>";
 }
-echo "<br>"; //pulando linha
+echo "<br>"; 
 
 echo "PASSAGEIROS:<br>";
 foreach ($voo->getPassageiros() as $passageiro) {
@@ -87,7 +88,7 @@ foreach ($voo->getPassageiros() as $passageiro) {
     echo "<br>";
 }
 
-echo "<br>"; //pulando linha
+echo "<br>"; 
 $tempoDeVooEmHoras = $voo->calcularTempoDeVoo(); //testar
 if ($tempoDeVooEmHoras >= 24) {
     $dias = floor($tempoDeVooEmHoras / 24);

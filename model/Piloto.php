@@ -1,12 +1,16 @@
 <?php
 
-class Piloto {
+class Piloto extends Funcionario{
     private string $nome;
     private int $idade;
     
     public function __construct(string $nome, int $idade) {
         $this->nome = $nome;
         $this->idade = $idade;
+    }
+
+    public function realizarFuncao() {
+        return "Pilotando a aeronave.";
     }
     
     public function getNome(): string {
